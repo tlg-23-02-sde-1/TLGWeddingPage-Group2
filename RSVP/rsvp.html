@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSVP</title>
+  </head>
+  <body>
+    <form action="http://localhost:3000/guests" method="post">
+      <input type="text" placeholder="fname" name="fname" />
+      <br><br>
+      <input type="text" placeholder="lname" name="lname" />
+      <br><br>
+      <input type="text" placeholder="email" name="email" />
+      <br><br>
+      <input type="text" placeholder="staddress" name="address" />
+      <br><br>
+      <input type="text" placeholder="city" name="city" />
+      <br><br>
+      <input type="text" placeholder="state" name="state" />
+      <br><br>
+      <input type="text" placeholder="number of attendees" name="headCount"/>
+      <br><br>
+      <input type="text" placeholder="zip" name="zip" />
+      <br><br>
+      <input type="text" placeholder="meal" name="meal" />
+      <br><br>
+      <input type="radio" name="yes_no" class="rsvp_choice" value="1" checked>Will Attend</input>
+      <input type="radio" name="yes_no" class="rsvp_choice" value="0">Will Not Attend</input>
+      <br><br>
+      <button type="submit">submit</button>
+    </form>
+  </body>
+</html>
