@@ -7,6 +7,9 @@ plan.addEventListener("click",()=> {
 rsvp.addEventListener("click",()=> {
     location.href = "./RSVP/rsvp.html"
 })
+gifts.addEventListener("click",()=>{
+    location.href = "./GIFTS/gifts.html"
+})
 photos.addEventListener("click",()=> {
     location.href = "./Photos/photos.html"
 })
