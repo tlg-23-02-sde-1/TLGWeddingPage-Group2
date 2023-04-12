@@ -20,6 +20,8 @@
   top: 0;
   left: 0;
   z-index: 9999;
+  justify-items: center;
+  margin-top: 24px;
 }
 
 #navigationBar {
@@ -51,13 +53,14 @@ body {
     flex-flow: column;
     justify-items: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 75px;
     padding-top: 20px;
   }
 
 h1 {
     font-family: 'Pacifico',cursive;
-    margin-bottom: 5%;
+    margin-bottom: 0;
+    padding-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -69,6 +72,15 @@ h2 {
 h3 {
     font-family: 'Bebas Neue',cursive;
   }
+
+h4 {
+    font-family: 'Bebas Neue' ,cursive;
+    color: antiquewhite;
+  }
+
+h5 {
+  font-family: 'Bebas Neue' ,cursive;
+}
 
 button {
     font-size: 20px;
@@ -87,9 +99,40 @@ button {
   font-family: 'Bebas Neue', cursive;
 }
 
+#photosCarousel {
+  position: relative;
+  display:flex;
+  flex-flow: column;
+  justify-items: center;
+  align-items: center;
+}
 .gallery {
   height: 400px;
   width: 600px;
   margin-top: 50px;
   margin-bottom: 150px;
+  position: relative;
+  display:flex;
+  flex-flow: column;
+  justify-items: center;
+  align-items: center;
+}
+
+#caption {
+  font-family: 'Bebas Neue' ,cursive;
+  font-size: larger;
+  color: antiquewhite;
+}
+
+.hotels {
+  position: relative;
+  display:flex;
+  flex-flow: column;
+  justify-items: center;
+  align-items: center;
+}
+
+#hotelMap {
+    width: 550px;
+    height: 300px;
 }
