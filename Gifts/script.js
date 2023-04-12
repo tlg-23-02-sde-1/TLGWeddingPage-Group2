@@ -1,15 +1,15 @@
 home.addEventListener("click",()=> {
-    location.href = "/TLGWeddingPage-Group2/index.html"
+    location.href = "../index.html"
 })
 plan.addEventListener("click",()=> {
-    location.href = "/TLGWeddingPage-Group2/Plan/plan.html"
+    location.href = "../Plan/plan.html"
 })
 rsvp.addEventListener("click",()=> {
-    location.href = "/TLGWeddingPage-Group2/RSVP/rsvp.html"
+    location.href = "../RSVP/rsvp.html"
 })
 
 photos.addEventListener("click",()=> {
-    location.href = "/TLGWeddingPage-Group2/Photos/photos.html"
+    location.href = "../Photos/photos.html"
 })
 
 cashapp.addEventListener("click",()=> {
@@ -28,5 +28,5 @@ registry.addEventListener("click",()=> {
 })
 
 login.addEventListener("click",()=> {
-    location.href = "/TLGWeddingPage-Group2/Login/login.html"
+    location.href = "../Login/login.html"
 })
