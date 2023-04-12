@@ -25,6 +25,14 @@ zelle.addEventListener("click",()=> {
 registry.addEventListener("click",()=> {
     location.href = "./Registry/registry.html"
 })
-login.addEventListener("click",()=> {
-    location.href = "../Login/login.html"
-})
+// export const handler = async(event) =>{
+//     //TODO implement
+//     const   weddingregistry =[{
+//         name: "Item"
+//     }]
+//     const response = {
+//         statusCode: 200,
+//         body: JSON.stringify(weddingregistry),
+//     };
+//     return response;
+// };

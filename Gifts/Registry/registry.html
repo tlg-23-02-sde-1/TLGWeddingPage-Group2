@@ -18,12 +18,12 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/TLGWeddingPage-Group2/styles.css" />
-    <!-- JS  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
     <script async defer src="./script.js"></script>
   </head>
   <body class="parallax">
-    <header id="container">
+    <header id="navigationBar">
       <button id="home">HOME</button>
       <button id="plan">PLAN</button>
       <button id="rsvp">RSVP</button>
@@ -34,8 +34,12 @@
       <h1>Justin and Angela</h1>
       <h2>Wedding Day: 15, APR 2024</h2>
     </section>
-    <section>
-      <button id="login">LOGIN</button>
-    </section>
+    <div>
+      <h2>Wedding Registry</h2>
+      <ul id="jaWeddingRegistry"></ul>
+    </div>
+    <script>
+      const jaWEddingRegistry = document.getElementById("jaWeddingRegistry");
+    </script>
   </body>
 </html>
