@@ -1,17 +1,17 @@
 home.addEventListener("click",()=> {
-    location.href = "/index.html"
+    location.href = "../../index.html"
 })
 plan.addEventListener("click",()=> {
-    location.href = "/Plan/plan.html"
+    location.href = "../../Plan/plan.html"
 })
 rsvp.addEventListener("click",()=> {
-    location.href = "/RSVP/rsvp.html"
+    location.href = "../../RSVP/rsvp.html"
 })
 gifts.addEventListener("click",()=> {
-    location.href = "/Gifts/gifts.html"
+    location.href = "../../Gifts/gifts.html"
 })
 photos.addEventListener("click",()=> {
-    location.href = "/Photos/photos.html"
+    location.href = "../../Photos/photos.html"
 })
 
 const justin_and_angela_wedding_registry = "https://z4wup2ehc7.execute-api.us-west-2.amazonaws.com/justin_and_angela_wedding_registry";

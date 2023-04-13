@@ -8,7 +8,7 @@ rsvp.addEventListener("click",()=> {
     location.href = "./rsvp.html"
 })
 gifts.addEventListener("click",()=>{
-    location.href = "../GIFTS/gifts.html"
+    location.href = "../Gifts/gifts.html"
 })
 photos.addEventListener("click",()=> {
     location.href = "../Photos/photos.html"
