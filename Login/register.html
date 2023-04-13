@@ -20,22 +20,38 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./style.css" />
     <!-- JS  -->
     <script async defer src="./script.js"></script>
   </head>
-  <body>
-    <h1>Register</h1>
-    <form action="http://localhost:3000/register" method="post">
-      <label for="uname">username</label>
+  <body class="parallax">
+    <header id="navigationBar">
+      <button id="home">HOME</button>
+      <button id="plan">PLAN</button>
+      <button id="rsvp">RSVP</button>
+      <button id="gifts">GIFTS</button>
+      <button id="photos">PHOTOS</button>
+    </header>
+    <br />
+    <section id="headingMain">
+      <h1>Justin and Angela</h1>
+      <h2>15, APR 2024</h2>
+    </section>
+    <section>
+      <h1 id="register">Register</h1>
       <br /><br />
-      <input type="text" placeholder="username" name="username" />
-      <br /><br />
-      <label for="password">password</label>
-      <br /><br />
-      <input type="text" placeholder="password" name="password" />
-      <br /><br />
-      <button type="submit">submit</button>
-      <br /><br />
-    </form>
+      <form action="http://localhost:3000/register" method="post">
+        <label for="uname">username</label>
+        <br /><br />
+        <input type="text" placeholder="username" name="username" />
+        <br /><br />
+        <label for="password">password</label>
+        <br /><br />
+        <input type="text" placeholder="password" name="password" />
+        <br /><br />
+        <button type="submit">submit</button>
+        <br /><br />
+      </form>
+    </section>
   </body>
 </html>

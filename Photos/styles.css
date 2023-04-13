@@ -40,3 +40,7 @@ header.is-visible {
   opacity: 1;
   transform: rotateZ(-2deg);
 }
+
+#photoHead {
+  font-size: 50px;
+}

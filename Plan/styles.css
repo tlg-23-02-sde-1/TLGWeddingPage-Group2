@@ -17,8 +17,7 @@
   flex-flow: column;
   justify-items: center;
   align-items: center;
-  margin-top: 75px;
-  padding-top: 125px;
+  margin-top: px;
 }
 
 #addressForm {
@@ -66,4 +65,8 @@
 .hotels {
   display: flex;
   flex-flow: column;
+}
+
+#heading {
+  margin-top: 12vh;
 }

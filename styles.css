@@ -26,15 +26,16 @@
   align-items: center;
 }
 #headingMain {
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: 40%;
   height: 125px;
-  background-color: #f8f8f8;
-  opacity: 80%;
-  top: 61px;
+  background: transparent;
+  top: 2vh;
+  right: 70vw;
+  font-size: 12px;
   z-index: 9999;
   justify-items: center;
-  margin-top: 24px;
+  margin-top: 0px;
 }
 body {
   text-align: center;
@@ -43,14 +44,16 @@ body {
 }
 
 h1 {
+  font-size: 18px;
   font-family: "Pacifico", cursive;
   margin-bottom: 0%;
-  padding-top: 3%;
+  /* padding-top: 3%; */
   margin-left: 15%;
   margin-right: 15%;
 }
 
 h2 {
+  font-size: 19px;
   font-family: "Bebas Neue", cursive;
 }
 h3 {
@@ -93,4 +96,26 @@ button {
 
 button:hover {
   background-color: bisque;
+}
+
+.landingHead {
+  font-size: 50px;
+}
+
+.login {
+  font-size: 40px;
+}
+
+label {
+  font-family: "Bebas Neue", cursive;
+}
+  
+#rsvpHead{
+  font-size: 40px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+#registryHeader {
+  font-size: 30px;
 }
