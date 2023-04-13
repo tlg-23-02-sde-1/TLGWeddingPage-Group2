@@ -1,8 +1,3 @@
-// const cors = require("cors")
-// const express = require("express")
-// const app = express()
-// app.use(cors())
-
 home.addEventListener("click",()=> {
     location.href = "../../index.html"
 })
