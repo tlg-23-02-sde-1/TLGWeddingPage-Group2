@@ -13,15 +13,19 @@ function displaySettings() {
     let mySwitch = document.createElement("label");
     let myInput = document.createElement("input");
     let mySpan = document.createElement("span");
+    let label = document.createElement("label");
+
+    label.innerText = "Timer";
 
     mySwitch.setAttribute("class","switch");
-    mySwitch.setAttribute("id","color_switch");
+    mySwitch.setAttribute("id","add_timer");
 
     myInput.setAttribute("type","checkbox");
 
     mySpan.setAttribute("class","slider round");
     mySwitch.appendChild(myInput);
     mySwitch.appendChild(mySpan);
+    options.appendChild(label);
     options.appendChild(mySwitch);
 }
 
