@@ -1,3 +1,8 @@
+// const cors = require("cors")
+// const express = require("express")
+// const app = express()
+// app.use(cors())
+
 home.addEventListener("click",()=> {
     location.href = "../../index.html"
 })
@@ -14,9 +19,57 @@ photos.addEventListener("click",()=> {
     location.href = "../../Photos/photos.html"
 })
 
-const justin_and_angela_wedding_registry = "https://z4wup2ehc7.execute-api.us-west-2.amazonaws.com/justin_and_angela_wedding_registry";
-const addItemForm = document.getElementById("addItemForm");
-const jaWeddingRegistry = document.getElementById("jaWeddingRegistry");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("https://1trzzhi5zh.execute-api.us-east-2.amazonaws.com/jaweddingregistry/jaweddingregistry");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    console.log(data);
+
+    const list = document.createElement("ul"); // create a new unordered list
+    data.forEach(item => {
+      const listItem = document.createElement("li"); // create a new list item
+      const itemText = document.createTextNode(`${item.Item} - ${item.Price}`); // create text node with item and price
+      const link = document.createElement("a"); // create a new link
+      link.href = item.URL_Link; // set the link URL to the item's URL_Link
+      link.appendChild(itemText); // append the text node to the link
+      listItem.appendChild(link); // append the link to the list item
+      list.appendChild(listItem); // append the list item to the unordered list
+    });
+
+    document.body.appendChild(list); // append the unordered list to the body of the document
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+//const jaweddingegistry = "https://1trzzhi5zh.execute-api.us-east-2.amazonaws.com/jaweddingregistry/jaweddingregistry";
+// const jaWeddingRegistry = document.getElementById("jaweddingregistry");
+
+// async function logJSONData(){
+//     const response = await fetch();
+//     const jsonData = await response.json();
+//     console.log(jsonData)
+// // Load the registry items from the API and add them to the registry list
+//   fetch("https://1trzzhi5zh.execute-api.us-east-2.amazonaws.com/jaweddingregistry/jaweddingregistry")
+//     .then((response) => response.json())
+//     .then((data) => {
+//     // Loop through the registry items and create list items for each item
+//       data.forEach((item) => {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = item.name + " - " + item.price;
+//         registryList.appendChild(listItem);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching registry items:", error);
+//     });
+// }
+  
 
 // // Function to add a new item to the registry
 // const addItem = (name, price,) => {
@@ -51,21 +104,6 @@ const jaWeddingRegistry = document.getElementById("jaWeddingRegistry");
 //   addItem(name, price);
 // });
 
-// Load the registry items from the API and add them to the registry list
-fetch(justin_and_angela_wedding_registry)
-  .then((response) => response.json())
-  .then((data) => {
-    // Loop through the registry items and create list items for each item
-    data.forEach((item) => {
-      const listItem = document.createElement("li");
-      listItem.textContent = item.name + " - " + item.price;
-      registryList.appendChild(listItem);
-    });
-  })
-  .catch((error) => {
-    console.error("Error fetching registry items:", error);
-  });
-
 // export const handler = async(event) =>{
 //     //TODO implement
 //     const   weddingregistry =[{
@@ -77,9 +115,3 @@ fetch(justin_and_angela_wedding_registry)
 //     };
 //     return response;
 // };
-
-// async function logJSONData(){
-//     const response = await fetch("https://z4wup2ehc7.execute-api.us-west-2.amazonaws.com/justin_and_angela_wedding_registry");
-//     const jsonData = await response.json();
-//     console.log(jsonData)
-// }
