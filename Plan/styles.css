@@ -1,115 +1,33 @@
-.parallax {
-  /* The image used */
-  background-image: url("https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
-
-
-  /* Full height */
-  height: 180%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#heading {
-  width: 100%;
-  height: 155px; 
-  background-color: #f8f8f8;
-  opacity: 80%; 
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  justify-items: center;
-  margin-top: 24px;
-}
-
-#navigationBar {
-  position:fixed;
-  width: 100%;
-  height: 48px; 
-  background-color: #f8f8f8;
-  opacity: 80%; 
-  top: 50;
-  left: 0;
-  z-index: 9999;
-  align-items: center;
-}
-
-body {
-  text-align: center;
-  background-color: transparent;
-  color: rgb(159, 137, 83);
-}
-
 #map {
-    height: 300px;
-    width: 60%;
-  }
+  height: 300px;
+  width: 60%;
+}
 
 #mainMap {
-    margin-top: 40px;
-    width: 440px;
-    height: 440px;
-    position: relative;
-    z-index: 3;
+  margin-top: 40px;
+  width: 440px;
+  height: 440px;
+  position: relative;
+  z-index: 3;
 }
 
 #location_map {
-    position: relative;
-    display:flex;
-    flex-flow: column;
-    justify-items: center;
-    align-items: center;
-    margin-top: 75px;
-    padding-top: 20px;
-  }
-
-h1 {
-    font-family: 'Pacifico',cursive;
-    margin-bottom: 0;
-    padding-top: 3%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-h2 {
-    font-family: 'Bebas Neue', cursive;
-}
-
-h3 {
-    font-family: 'Bebas Neue',cursive;
-  }
-
-h4 {
-    font-family: 'Bebas Neue' ,cursive;
-    color: antiquewhite;
-  }
-
-h5 {
-  font-family: 'Bebas Neue' ,cursive;
-}
-
-button {
-    font-size: 20px;
-    border: 1px solid;
-    border-radius: 5px;
-    background-color: transparent;
-    border-color: rgb(183, 152, 74);
-    color:rgb(159, 137, 83) ;
-    font-family: 'Bebas Neue', cursive;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: 20px;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-items: center;
+  align-items: center;
+  margin-top: 75px;
+  padding-top: 125px;
 }
 
 #addressForm {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
 
 #photosCarousel {
   position: relative;
-  display:flex;
+  display: flex;
   flex-flow: column;
   justify-items: center;
   align-items: center;
@@ -120,29 +38,29 @@ button {
   margin-top: 50px;
   margin-bottom: 150px;
   position: relative;
-  display:flex;
+  display: flex;
   flex-flow: column;
   justify-items: center;
   align-items: center;
 }
 
 #caption {
-  font-family: 'Bebas Neue' ,cursive;
+  font-family: "Bebas Neue", cursive;
   font-size: larger;
   color: antiquewhite;
 }
 
 .hotels {
   position: relative;
-  display:flex;
+  display: flex;
   flex-flow: column;
   justify-items: center;
   align-items: center;
 }
 
 #hotelMap {
-    width: 550px;
-    height: 300px;
+  width: 550px;
+  height: 300px;
 }
 
 .hotels {
