@@ -70,8 +70,8 @@ const countries = {
     zoom: 6,
   },
   us: {
-    center: { lat: 37.1, lng: -95.7 },
-    zoom: 3,
+    center: { lat: 35.20846436257869, lng: -84.65554513266088 },
+    zoom: 12,
   },
   uk: {
     center: { lat: 54.8, lng: -4.6 },
@@ -99,36 +99,38 @@ function initMap() {
   });
 
   document
-  .getElementById("addressForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    .getElementById("addressForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form submission
 
-    // Get address from input field
-    var address = document.getElementById("addressInput").value;
+      // Get address from input field
+      var address = document.getElementById("addressInput").value;
 
-    // Use Google Maps geocoding service
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: address }, function (results, status) {
-      if (status === "OK") {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
+      // Use Google Maps geocoding service
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address: address }, function (results, status) {
+        if (status === "OK") {
+          var lat = results[0].geometry.location.lat();
+          var lng = results[0].geometry.location.lng();
 
-        // Update map with marker
-        var map = new google.maps.Map(document.getElementById("mainMap"), {
-          center: { lat: lat, lng: lng },
-          zoom: 14,
-          mapId: "Map_ID",
-        });
-        var marker = new google.maps.Marker({
-          map: map,
-          position: { lat: lat, lng: lng },
-        });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+          // Update map with marker
+          var map = new google.maps.Map(document.getElementById("mainMap"), {
+            center: { lat: lat, lng: lng },
+            zoom: 12,
+            mapId: "Map_ID",
+          });
+          var marker = new google.maps.Marker({
+            map: map,
+            position: { lat: lat, lng: lng },
+          });
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
+          );
+        }
+      });
     });
-  });
-  
+
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById("info-content"),
   });
@@ -157,7 +159,7 @@ function onPlaceChanged() {
 
   if (place.geometry && place.geometry.location) {
     map.panTo(place.geometry.location);
-    map.setZoom(15);
+    map.setZoom(12);
     search();
   } else {
     document.getElementById("autocomplete").placeholder = "Enter a city";
