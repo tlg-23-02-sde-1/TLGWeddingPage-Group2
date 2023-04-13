@@ -1,63 +1,3 @@
-//Initialize and add the map
-let map;
-let places;
-let infoWindow;
-let markers = [];
-let autocomplete;
-async function initMap() {
-  // The location of Wedding (get from user input on prompt of form)
-  const position = { lat: 35.04737974945102, lng: -85.3137127136936 };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
-
-  // The map, centered at Venue
-  map = new Map(document.getElementById("map"), {
-    zoom: 9,
-    center: position,
-    mapId: "MAP_ID",
-  });
-
-  map2 = new Map(document.getElementById("hotelMap"), {
-    zoom: 9,
-    center: position,
-    mapId: "MAP_ID",
-  });
-}
-
-initMap();
-
-document
-  .getElementById("addressForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Get address from input field
-    var address = document.getElementById("addressInput").value;
-
-    // Use Google Maps geocoding service
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: address }, function (results, status) {
-      if (status === "OK") {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
-
-        // Update map with marker
-        var map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: lat, lng: lng },
-          zoom: 14,
-          mapId: "Map_ID",
-        });
-        var marker = new google.maps.Marker({
-          map: map,
-          position: { lat: lat, lng: lng },
-        });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  });
 home.addEventListener("click", () => {
   location.href = "../index.html";
 });
@@ -74,6 +14,12 @@ photos.addEventListener("click", () => {
   location.href = "../Photos/photos.html";
 });
 
+let map;
+let map2;
+let places;
+let infoWindow;
+let markers = [];
+let autocomplete;
 const countryRestrict = { country: "us" };
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
@@ -132,40 +78,99 @@ const countries = {
     zoom: 5,
   },
 };
-infoWindow = new google.maps.InfoWindow({
-  content: document.getElementById("info-content"),
-});
-autocomplete = new google.maps.places.Autocomplete(
-  document.getElementById("autocomplete"),
-  {
-    types: ["(cities)"],
-    componentRestrictions: countryRestrict,
-    fields: ["geometry"],
-  }
-);
-places = new google.maps.places.PlacesService(map);
-autocomplete.addListener("place_changed", onPlaceChanged);
-// Add a DOM event listener to react when the user selects a country.
-document
-  .getElementById("country")
-  .addEventListener("change", setAutocompleteCountry);
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: countries["us"].zoom,
+    center: countries["us"].center,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: false,
+    streetViewControl: false,
+  });
+
+  map2 = new google.maps.Map(document.getElementById("mainMap"), {
+    zoom: countries["us"].zoom,
+    center: countries["us"].center,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: false,
+    streetViewControl: false,
+  });
+
+  document
+  .getElementById("addressForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get address from input field
+    var address = document.getElementById("addressInput").value;
+
+    // Use Google Maps geocoding service
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: address }, function (results, status) {
+      if (status === "OK") {
+        var lat = results[0].geometry.location.lat();
+        var lng = results[0].geometry.location.lng();
+
+        // Update map with marker
+        var map = new google.maps.Map(document.getElementById("mainMap"), {
+          center: { lat: lat, lng: lng },
+          zoom: 14,
+          mapId: "Map_ID",
+        });
+        var marker = new google.maps.Marker({
+          map: map,
+          position: { lat: lat, lng: lng },
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  });
+  
+  infoWindow = new google.maps.InfoWindow({
+    content: document.getElementById("info-content"),
+  });
+  // Create the autocomplete object and associate it with the UI input control.
+  // Restrict the search to the default country, and to place type "cities".
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("autocomplete"),
+    {
+      types: ["(cities)"],
+      componentRestrictions: countryRestrict,
+      fields: ["geometry"],
+    }
+  );
+  places = new google.maps.places.PlacesService(map);
+  autocomplete.addListener("place_changed", onPlaceChanged);
+  // Add a DOM event listener to react when the user selects a country.
+  document
+    .getElementById("country")
+    .addEventListener("change", setAutocompleteCountry);
+}
+
+// When the user selects a city, get the place details for the city and
+// zoom the map in on the city.
 function onPlaceChanged() {
   const place = autocomplete.getPlace();
 
   if (place.geometry && place.geometry.location) {
-    map2.panTo(place.geometry.location);
-    map2.setZoom(15);
+    map.panTo(place.geometry.location);
+    map.setZoom(15);
     search();
   } else {
     document.getElementById("autocomplete").placeholder = "Enter a city";
   }
 }
+
 // Search for hotels in the selected city, within the viewport of the map.
 function search() {
   const search = {
-    bounds: map2.getBounds(),
+    bounds: map.getBounds(),
     types: ["lodging"],
   };
+
   places.nearbySearch(search, (results, status, pagination) => {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       clearResults();
@@ -194,6 +199,7 @@ function search() {
     }
   });
 }
+
 function clearMarkers() {
   for (let i = 0; i < markers.length; i++) {
     if (markers[i]) {
@@ -203,27 +209,32 @@ function clearMarkers() {
 
   markers = [];
 }
+
+// Set the country restriction based on user input.
+// Also center and zoom the map on the given country.
 function setAutocompleteCountry() {
   const country = document.getElementById("country").value;
 
   if (country == "all") {
     autocomplete.setComponentRestrictions({ country: [] });
-    map2.setCenter({ lat: 15, lng: 0 });
-    map2.setZoom(2);
+    map.setCenter({ lat: 15, lng: 0 });
+    map.setZoom(2);
   } else {
     autocomplete.setComponentRestrictions({ country: country });
-    map2.setCenter(countries[country].center);
-    map2.setZoom(countries[country].zoom);
+    map.setCenter(countries[country].center);
+    map.setZoom(countries[country].zoom);
   }
 
   clearResults();
   clearMarkers();
 }
+
 function dropMarker(i) {
   return function () {
-    markers[i].setMap(map2);
+    markers[i].setMap(map);
   };
 }
+
 function addResult(result, i) {
   const results = document.getElementById("results");
   const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
@@ -251,6 +262,7 @@ function addResult(result, i) {
   tr.appendChild(nameTd);
   results.appendChild(tr);
 }
+
 function clearResults() {
   const results = document.getElementById("results");
 
@@ -258,6 +270,7 @@ function clearResults() {
     results.removeChild(results.childNodes[0]);
   }
 }
+
 // Get the place details for a hotel. Show the information in an info window,
 // anchored on the marker for the hotel that the user selected.
 function showInfoWindow() {
@@ -271,45 +284,10 @@ function showInfoWindow() {
         return;
       }
 
-      infoWindow.open(map2, marker);
+      infoWindow.open(map, marker);
       buildIWContent(place);
     }
   );
-}
-// Assign a five-star rating to the hotel, using a black star ('&#10029;')
-// to indicate the rating the hotel has earned, and a white star ('&#10025;')
-// for the rating points not achieved.
-if (place.rating) {
-  let ratingHtml = "";
-
-  for (let i = 0; i < 5; i++) {
-    if (place.rating < i + 0.5) {
-      ratingHtml += "&#10025;";
-    } else {
-      ratingHtml += "&#10029;";
-    }
-
-    document.getElementById("iw-rating-row").style.display = "";
-    document.getElementById("iw-rating").innerHTML = ratingHtml;
-  }
-} else {
-  document.getElementById("iw-rating-row").style.display = "none";
-}
-// The regexp isolates the first part of the URL (domain plus subdomain)
-// to give a short URL for displaying in the info window.
-if (place.website) {
-  let fullUrl = place.website;
-  let website = String(hostnameRegexp.exec(place.website));
-
-  if (!website) {
-    website = "http://" + place.website + "/";
-    fullUrl = website;
-  }
-
-  document.getElementById("iw-website-row").style.display = "";
-  document.getElementById("iw-website").textContent = website;
-} else {
-  document.getElementById("iw-website-row").style.display = "none";
 }
 
 // Load the place information into the HTML elements used by the info window.
@@ -326,5 +304,43 @@ function buildIWContent(place) {
   } else {
     document.getElementById("iw-phone-row").style.display = "none";
   }
+
+  // Assign a five-star rating to the hotel, using a black star ('&#10029;')
+  // to indicate the rating the hotel has earned, and a white star ('&#10025;')
+  // for the rating points not achieved.
+  if (place.rating) {
+    let ratingHtml = "";
+
+    for (let i = 0; i < 5; i++) {
+      if (place.rating < i + 0.5) {
+        ratingHtml += "&#10025;";
+      } else {
+        ratingHtml += "&#10029;";
+      }
+
+      document.getElementById("iw-rating-row").style.display = "";
+      document.getElementById("iw-rating").innerHTML = ratingHtml;
+    }
+  } else {
+    document.getElementById("iw-rating-row").style.display = "none";
+  }
+
+  // The regexp isolates the first part of the URL (domain plus subdomain)
+  // to give a short URL for displaying in the info window.
+  if (place.website) {
+    let fullUrl = place.website;
+    let website = String(hostnameRegexp.exec(place.website));
+
+    if (!website) {
+      website = "http://" + place.website + "/";
+      fullUrl = website;
+    }
+
+    document.getElementById("iw-website-row").style.display = "";
+    document.getElementById("iw-website").textContent = website;
+  } else {
+    document.getElementById("iw-website-row").style.display = "none";
+  }
 }
+
 window.initMap = initMap;

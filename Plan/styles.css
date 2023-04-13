@@ -47,6 +47,14 @@ body {
     width: 60%;
   }
 
+#mainMap {
+    margin-top: 40px;
+    width: 440px;
+    height: 440px;
+    position: relative;
+    z-index: 3;
+}
+
 #location_map {
     position: relative;
     display:flex;
@@ -135,4 +143,9 @@ button {
 #hotelMap {
     width: 550px;
     height: 300px;
+}
+
+.hotels {
+  display: flex;
+  flex-flow: column;
 }
