@@ -1,3 +1,12 @@
+
+.parallax {
+  opacity: 100%;
+}
+
+#profileHeader{
+  font-size: 40px;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;

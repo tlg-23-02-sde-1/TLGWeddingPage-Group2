@@ -42,7 +42,7 @@
         <h1 id="rsvpHead">RSVP</h1>
       </section>
       <br />
-      <form action="http://localhost:3000/guests" method="post">
+      <form id="guests">
         <input type="text" placeholder="first name" name="fname" />
         <br /><br />
         <input type="text" placeholder="last name" name="lname" />
@@ -61,15 +61,17 @@
         <br /><br />
         <input type="text" placeholder="meal preference" name="meal" />
         <br /><br />
-        <input
-          type="radio"
-          name="yes_no"
-          class="rsvp_choice"
-          value="1"
-          checked
-        />Will Attend
-        <input type="radio" name="yes_no" class="rsvp_choice" value="0" />Will
-        Not Attend <br /><br />
+        <box id="radios">
+          <input
+            type="radio"
+            name="yes_no"
+            class="rsvp_choice"
+            value="1"
+            checked
+          />Will Attend
+          <input type="radio" name="yes_no" class="rsvp_choice" value="0" />Will
+          Not Attend <br /><br />
+        </box>
         <button type="submit" id="submit">submit</button>
       </form>
     </section>
