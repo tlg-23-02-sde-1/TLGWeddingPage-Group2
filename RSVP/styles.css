@@ -22,3 +22,32 @@ form {
   border: 2px solid black;
   color: black;
 }
+
+.response {
+  color: black;
+  font-size: 50px;
+  opacity: 100%;
+}
+
+input {
+  width: 420px;
+  border-radius: 6px;
+  border: transparent;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+#radios {
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+input[type=radio] {
+  border: 0px;
+  width:4em;
+  height: 2em;
+  margin-bottom: 50px;
+}
